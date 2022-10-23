@@ -1,8 +1,8 @@
 import { Flex, Table, Thead } from "@chakra-ui/react";
 import React from "react";
-import TableBody from "./TableBody";
-import TableControls from "./TableControls";
-import TableHead from "./TableHead";
+import TableBody from "../DataTable/TableBody";
+import TableControls from "../DataTable/TableControls";
+import TableHead from "../DataTable/TableHead";
 
 interface CharacterTableProps {
   data: Record<string, any>[];
@@ -23,13 +23,13 @@ const CharacterTable = ({
   console.log(data);
   return (
     <Flex flexDir="column" border={"1px solid black"} borderRadius={10} p={5}>
-      <TableControls
+      {/* <TableControls
         pages={pages}
         currPage={currPage}
         nextPage={nextPage}
         prevPage={prevPage}
         goToPage={goToPage}
-      />
+      /> */}
       <Flex overflow="auto">
         <Table variant="unstyled" mt={4}>
           <TableHead />

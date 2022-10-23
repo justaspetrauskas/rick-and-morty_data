@@ -4,6 +4,7 @@ import React from "react";
 interface TableControlsProps {
   pages: number;
   currPage: number;
+  pageData: Record<string, any>[];
   nextPage: () => void;
   prevPage: () => void;
   goToPage: (page: number) => void;
@@ -14,6 +15,7 @@ const TableControls = ({
   nextPage,
   prevPage,
   goToPage,
+  pageData,
 }: TableControlsProps) => {
   return (
     <Flex alignItems={"center"} justifyContent={"space-between"}>

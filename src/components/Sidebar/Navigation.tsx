@@ -4,6 +4,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Box,
   Button,
   Flex,
   Icon,
@@ -26,7 +27,7 @@ const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
       <Accordion defaultIndex={[0]} allowMultiple as={Menu}>
         <AccordionItem border={"none"}>
           <AccordionButton aria-label="seasons" borderRadius={5}>
-            <MenuButton w="100%" flex="1">
+            <Box w="100%" flex="1">
               <Flex alignItems={"center"}>
                 <Icon
                   as={MdOutlineLocalMovies}
@@ -37,7 +38,7 @@ const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
                   Seasons
                 </Text>
               </Flex>
-            </MenuButton>
+            </Box>
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel float={"right"} w="90%">

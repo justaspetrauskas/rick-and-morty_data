@@ -17,15 +17,12 @@ import Navigation from "./Navigation";
 interface SidebarProps {
   seasons: string[];
   isLoading: boolean;
+  selectSeason: (season: string) => void;
 }
-const Sidebar = ({ seasons, isLoading }: SidebarProps) => {
-  const selectSeason = (season: string) => {
-    console.log(season);
-  };
-
+const Sidebar = ({ seasons, isLoading, selectSeason }: SidebarProps) => {
   return (
     <Flex
-      pos="sticky"
+      pos="fixed"
       h="100vh"
       w={"15%"}
       flexDir="column"

@@ -31,19 +31,40 @@ export const groupBySeason = (arr: Record<string, any>[]) => {
   }, {});
 };
 
-export const getUniqueCharactersIds = (arr: Record<string, any>[]) => {
+export const getCharacters = (arr: Record<string, any>[]) => {
   const uniqueCharactersIds = Array.from(
-    new Set(
-      arr
-        .map((e) =>
-          e.characters.map((item: string) => {
-            let itemArr = item.split("/");
-            return itemArr[itemArr.length - 1];
-          })
-        )
-        .flat(1)
-    )
+    arr
+      .map((e) =>
+        e.characters.map((item: string) => {
+          let itemArr = item.split("/");
+          return itemArr[itemArr.length - 1];
+        })
+      )
+      .flat(1)
   );
 
   return uniqueCharactersIds;
+};
+
+export const getUniqueCharactersIds = (arr: Record<string, any>[]) => {
+  const uniqueCharacters = Array.from(new Set(getCharacters(arr)));
+  return uniqueCharacters;
+};
+
+export const sortCharacterIds = (arr: Record<string, any>[]) => {
+  const sortedCharacters = getCharacters(arr).reduce(function (acc, curr) {
+    acc[curr] ? ++acc[curr] : (acc[curr] = 1);
+
+    return acc;
+  }, []);
+
+  const sorted = Object.entries(sortedCharacters)
+    .map((arr) => {
+      return { id: arr[0], value: arr[1] };
+    })
+    .sort((a: Record<string, any>, b: Record<string, any>) => {
+      return b.value - a.value;
+    });
+
+  return sorted;
 };
