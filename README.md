@@ -15,4 +15,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 .
 
 The app is made to present some of the statistics from Rick and Morty. 
-App is made using [Rick and Morty Api](https://rickandmortyapi.com/ "Rick and Morty Api"), Chkara UI and useQuery hook, 
+App is made using [Rick and Morty Api](https://rickandmortyapi.com/ "Rick and Morty Api"), Chkara UI and useQuery hook, and recharts 
