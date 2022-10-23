@@ -1,22 +1,18 @@
 import { Flex, Skeleton, Table, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { getUniqueCharactersIds, paginate } from "../../utils/helpers";
 import useMultipleCharacters from "../../utils/hooks/useMultipleCharacters";
 import TableBody from "./TableBody";
 import TableControls from "./TableControls";
 import TableHead from "./TableHead";
 interface DataTableProps {
-  seasonData: Record<string, any>[];
-  characterIds: string[];
+  paginatedData: Record<string, any>[][];
+  isLoading: boolean;
 }
-const DataTable = ({ seasonData, characterIds }: DataTableProps) => {
-  const { paginatedData, isLoading, error } = useMultipleCharacters({
-    ids: characterIds,
-  });
+const DataTable = ({ paginatedData, isLoading }: DataTableProps) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   const nextPage = () => {
-    if (currentPage < paginatedData.length) setCurrentPage(currentPage + 1);
+    if (currentPage + 1 < paginatedData.length) setCurrentPage(currentPage + 1);
   };
   const prevPage = () => {
     if (currentPage > 0) setCurrentPage(currentPage - 1);
@@ -25,11 +21,6 @@ const DataTable = ({ seasonData, characterIds }: DataTableProps) => {
     if (page > 0 && page <= paginatedData.length) setCurrentPage(page);
   };
 
-  useEffect(() => {
-    if (paginatedData) {
-      console.log(paginatedData[currentPage]);
-    }
-  }, [paginatedData, currentPage]);
   return (
     <VStack
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"

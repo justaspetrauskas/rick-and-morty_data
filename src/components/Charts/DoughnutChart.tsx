@@ -103,7 +103,7 @@ const DoughnutChart = ({ data }: DoughnutChartProps) => {
   }, [data]);
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <PieChart width={800} height={400}>
+      <PieChart width={400} height={400}>
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}

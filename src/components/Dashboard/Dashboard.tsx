@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from "@chakra-ui/react";
+import { Flex, Skeleton, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { getUniqueCharactersIds } from "../../utils/helpers";
 import useEpisodeData from "../../utils/hooks/useEpisodeData";
@@ -6,6 +6,8 @@ import Sidebar from "../Sidebar/Sidebar";
 import DashBoardHeader from "./DashBoardHeader";
 import DataTable from "../DataTable/DataTable";
 import SeasonStats from "./SeasonStats";
+import Charts from "../Charts/Charts";
+import DashboardData from "./DashboardData";
 
 const Dashboard = () => {
   const { groupedData, error, isLoading } = useEpisodeData();
@@ -34,28 +36,24 @@ const Dashboard = () => {
       />
       {/* data */}
       <Skeleton isLoaded={!isLoading} w="100%" ml="15%">
-        <Flex w="85%" minH={"100vh"} flexDir="column" px={"1%"} py={"0.5%"}>
+        <VStack
+          w="85%"
+          minH={"100vh"}
+          spacing={2}
+          align="left"
+          px={"1%"}
+          py={"0.5%"}
+        >
           {/* DashBoard top */}
           <DashBoardHeader season={season} />
-          <Flex w="100%" flexDir="row">
-            <Flex w="75%" flexDir="column">
-              <SeasonStats
-                seasonData={groupedData[season]}
-                isLoading={isLoading}
-                charactersAmount={uniqueCharactersIds.length}
-              />
-
-              <DataTable
-                seasonData={groupedData[season]}
-                characterIds={uniqueCharactersIds}
-              />
-            </Flex>
-          </Flex>
-
           {/* statistics */}
-        </Flex>
+          <DashboardData
+            seasonData={groupedData[season]}
+            loading={isLoading}
+            uniqueCharactersIds={uniqueCharactersIds}
+          />
+        </VStack>
       </Skeleton>
-      {/* <DataDashboard seasonData={groupedData[season]} /> */}
     </Flex>
   );
 };

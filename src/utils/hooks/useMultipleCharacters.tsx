@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { paginate } from "../helpers";
+import { groupBy, paginate } from "../helpers";
 
 const fetchMultipleCharacter = async (ids: string[]) => {
   const response = await fetch(
@@ -19,6 +19,11 @@ const useMultipleCharacters = ({ ids }: useMultipleCharactersProps) => {
   const [paginatedData, setPaginatedData] = useState<Record<string, any>[][]>(
     []
   );
+  const [groupedData, setGroupedData] = useState<Record<string, any>>({
+    species: {},
+    gender: {},
+    status: {},
+  });
 
   const { data, status } = useQuery(["multipleCharacters", ids], () =>
     fetchMultipleCharacter(ids)
@@ -26,7 +31,15 @@ const useMultipleCharacters = ({ ids }: useMultipleCharactersProps) => {
 
   useEffect(() => {
     if (data && Array.isArray(data)) {
+      const groupedBySpecies = groupBy(data, "species");
+      const groupedByGender = groupBy(data, "gender");
+      const groupedByStatus = groupBy(data, "status");
       const paginatedData = paginate(data, 10);
+      setGroupedData({
+        species: groupedBySpecies,
+        gender: groupedByGender,
+        status: groupedByStatus,
+      });
       setPaginatedData(paginatedData);
     }
   }, [data]);
@@ -43,7 +56,7 @@ const useMultipleCharacters = ({ ids }: useMultipleCharactersProps) => {
     }
   }, [status]);
 
-  return { paginatedData, isLoading, error };
+  return { paginatedData, groupedData, isLoading, error };
 };
 
 export default useMultipleCharacters;
