@@ -1,6 +1,5 @@
 # Rick and Morty Dashboard
 .
-
 ## How to run the app:
 
 In the project directory, you can run:
