@@ -92,7 +92,16 @@ const renderActiveShape = (props: any) => {
   );
 };
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = [
+  "#0088FE",
+  "#00C49F",
+  "#FFBB28",
+  "#FF8042",
+  "#42FF5B",
+  "#42CDFF",
+  "#153E0B",
+  "#FF8042",
+];
 
 const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
   const [chartData, setChartData] = useState<ChartData[]>([]);
@@ -109,6 +118,7 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
       return { name: entry[0], value: entry[1].length };
     });
     setChartData(transformedData);
+    console.log(transformedData);
   }, [data]);
   return (
     <Box
@@ -137,10 +147,14 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
             paddingAngle={1}
             onMouseEnter={onPieEnter}
           >
-            {chartData.map((entry: any, index: number) => (
+            {chartData.map((entry: Record<string, any>, index: number) => (
               <Cell
                 key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+                fill={
+                  entry.name === "unknown"
+                    ? "#7F7F7F"
+                    : COLORS[index % COLORS.length]
+                }
               />
             ))}
           </Pie>
@@ -149,8 +163,8 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
             layout="horizontal"
             verticalAlign="middle"
             wrapperStyle={{
-              bottom: 0,
-              padding: "5px 0px",
+              bottom: "2%",
+
               right: 0,
               transform: "translate(0, -50%)",
               lineHeight: "20px",

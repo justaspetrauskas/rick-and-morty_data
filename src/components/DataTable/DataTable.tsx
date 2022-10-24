@@ -30,8 +30,6 @@ const DataTable = ({ paginatedData, isLoading }: DataTableProps) => {
       overflow="auto"
       p={3}
     >
-      {/* <TableHeader /> */}
-
       <TableControls
         pages={paginatedData.length}
         pageData={paginatedData[currentPage]}
