@@ -21,6 +21,10 @@ const DataTable = ({ paginatedData, isLoading }: DataTableProps) => {
     if (page > 0 && page <= paginatedData.length) setCurrentPage(page);
   };
 
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [paginatedData]);
+
   return (
     <VStack
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
