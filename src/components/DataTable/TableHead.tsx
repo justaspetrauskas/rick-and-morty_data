@@ -3,10 +3,12 @@ import React from "react";
 const headers = ["image", "name", "gender", "species", "origin", "status"];
 const TableHead = () => {
   return (
-    <Thead>
+    <Thead w="100%">
       <Tr color="gray">
         {headers.map((header, index) => (
-          <Th key={index}>{header}</Th>
+          <Th align="center" key={index}>
+            {header}
+          </Th>
         ))}
       </Tr>
     </Thead>

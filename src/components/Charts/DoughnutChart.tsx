@@ -125,7 +125,8 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
       borderRadius={"15px"}
       w="100%"
-      h={`calc(100%/3)`}
+      minH={`calc(100%/3)`}
+      overflow="hidden"
       p={3}
     >
       <Heading as="h4" size="md">

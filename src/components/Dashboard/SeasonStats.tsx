@@ -54,6 +54,7 @@ const SeasonStats = ({
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
       borderRadius={"15px"}
       w="100%"
+      h="100%"
       p={3}
     >
       <VStack gap={2}>
@@ -89,12 +90,10 @@ const SeasonStats = ({
           w="100%"
           h="100%"
         >
-          <Box w="100%" h="100%">
-            <Heading as="h6" size="md" py={3}>
-              Characters by episode
-            </Heading>
-            <LineChart data={charactersByEpisode} />
-          </Box>
+          <LineChart
+            data={charactersByEpisode}
+            title={"Character distribution"}
+          />
         </Skeleton>
       </VStack>
     </Box>

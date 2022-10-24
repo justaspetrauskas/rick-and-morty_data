@@ -18,7 +18,7 @@ const TableControls = ({
   pageData,
 }: TableControlsProps) => {
   return (
-    <Flex alignItems={"center"} justifyContent={"space-between"}>
+    <Flex alignItems={"center"} justifyContent={"space-between"} w="100%">
       <Heading as="h5" fontSize={"1.5rem"}>
         Character Summary
       </Heading>

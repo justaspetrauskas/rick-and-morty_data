@@ -38,7 +38,7 @@ const DataTable = ({ paginatedData, isLoading }: DataTableProps) => {
         prevPage={prevPage}
         goToPage={gotToPage}
       />
-      <Skeleton isLoaded={!isLoading}>
+      <Skeleton isLoaded={!isLoading} w="100%">
         <Flex overflow="auto">
           <Table variant="unstyled" mt={4}>
             <TableHead />

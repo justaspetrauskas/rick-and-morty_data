@@ -35,7 +35,7 @@ const Dashboard = () => {
         selectSeason={selectSeason}
       />
       {/* data */}
-      <Skeleton isLoaded={!isLoading} w="100%" ml="15%">
+      <Skeleton isLoaded={!isLoading} w="100%" ml="15%" borderRadius="15px">
         <VStack
           w="100%"
           minH={"100vh"}
