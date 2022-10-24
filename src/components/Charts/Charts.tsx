@@ -5,17 +5,11 @@ interface ChartsProps {
   groupedData: Record<string, any>;
 }
 const Charts = ({ groupedData }: ChartsProps) => {
-  useEffect(() => {
-    if (groupedData) {
-      console.log(groupedData);
-    }
-  }, [groupedData]);
-
   return (
-    <VStack spacing={2} align="center" h="100%" w="100%">
-      <DoughnutChart data={groupedData.gender} />
-      <DoughnutChart data={groupedData.species} />
-      <DoughnutChart data={groupedData.status} />
+    <VStack spacing={2} align="center" h="100vh" w="100%">
+      <DoughnutChart data={groupedData.gender} title={"Character by gender"} />
+      <DoughnutChart data={groupedData.species} title={"Character by gender"} />
+      <DoughnutChart data={groupedData.status} title={"Character by gender"} />
     </VStack>
   );
 };

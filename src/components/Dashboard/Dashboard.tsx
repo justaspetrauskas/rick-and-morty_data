@@ -27,7 +27,7 @@ const Dashboard = () => {
     setSeason(season);
   };
   return (
-    <Flex h="100vh" overflow="auto" minH="100vh" flexDir="row" maxWidth="100vw">
+    <Flex h="100vh" flexDir="row" maxWidth="100vw">
       {/* sidebar */}
       <Sidebar
         seasons={Object.keys(groupedData)}
@@ -37,7 +37,7 @@ const Dashboard = () => {
       {/* data */}
       <Skeleton isLoaded={!isLoading} w="100%" ml="15%">
         <VStack
-          w="85%"
+          w="100%"
           minH={"100vh"}
           spacing={2}
           align="left"

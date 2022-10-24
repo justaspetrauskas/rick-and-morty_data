@@ -20,8 +20,8 @@ const DashboardData = ({
     });
 
   return (
-    <Flex flexDir="row" w="100%">
-      <VStack spacing={2} w="75%" align="stretch">
+    <Flex flexDir="row">
+      <VStack spacing={2} w="60%" align="stretch">
         <SeasonStats
           seasonData={seasonData}
           isLoading={loading}
@@ -31,7 +31,7 @@ const DashboardData = ({
           <DataTable paginatedData={paginatedData} isLoading={isLoading} />
         </Skeleton>
       </VStack>
-      <VStack spacing={2} align="left" px={"1%"} py={"0.5%"} w="100%">
+      <VStack spacing={2} px={"1%"} py={"0.5%"} w="40%">
         <Charts groupedData={groupedData} />
       </VStack>
     </Flex>

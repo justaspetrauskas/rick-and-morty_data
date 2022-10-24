@@ -1,5 +1,13 @@
+import { Box, Heading } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
 interface ChartData {
   name: string;
@@ -8,6 +16,7 @@ interface ChartData {
 
 interface DoughnutChartProps {
   data: Record<string, any>;
+  title: string;
 }
 
 const renderActiveShape = (props: any) => {
@@ -69,7 +78,7 @@ const renderActiveShape = (props: any) => {
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`PV ${value}`}</text>
+      >{`Characters: ${value}`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -77,7 +86,7 @@ const renderActiveShape = (props: any) => {
         textAnchor={textAnchor}
         fill="#999"
       >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+        {`(Of total: ${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
   );
@@ -85,7 +94,7 @@ const renderActiveShape = (props: any) => {
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const DoughnutChart = ({ data }: DoughnutChartProps) => {
+const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const onPieEnter = useCallback(
@@ -102,29 +111,54 @@ const DoughnutChart = ({ data }: DoughnutChartProps) => {
     setChartData(transformedData);
   }, [data]);
   return (
-    <ResponsiveContainer>
-      <PieChart width={400} height={400}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={chartData}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          //   label={renderCustomizedLabel}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-          paddingAngle={1}
-          onMouseEnter={onPieEnter}
-        >
-          {chartData.map((entry: any, index: number) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <Box
+      boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
+      borderRadius={"15px"}
+      w="100%"
+      h={`calc(100%/3)`}
+      p={3}
+    >
+      <Heading as="h4" size="md">
+        {title}
+      </Heading>
+      <ResponsiveContainer>
+        <PieChart width={400} height={350}>
+          <Pie
+            activeIndex={activeIndex}
+            activeShape={renderActiveShape}
+            data={chartData}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            innerRadius={60}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            paddingAngle={1}
+            onMouseEnter={onPieEnter}
+          >
+            {chartData.map((entry: any, index: number) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+          <Legend
+            iconSize={10}
+            layout="horizontal"
+            verticalAlign="middle"
+            wrapperStyle={{
+              bottom: 0,
+              padding: "5px 0px",
+              right: 0,
+              transform: "translate(0, -50%)",
+              lineHeight: "20px",
+            }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </Box>
   );
 };
 
