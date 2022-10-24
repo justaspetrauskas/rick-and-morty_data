@@ -31,9 +31,8 @@ const DashboardData = ({
           <DataTable paginatedData={paginatedData} isLoading={isLoading} />
         </Skeleton>
       </VStack>
-      <VStack spacing={2} px={"1%"} py={"0.5%"} w="40%">
-        <Charts groupedData={groupedData} />
-      </VStack>
+
+      <Charts groupedData={groupedData} />
     </Flex>
   );
 };

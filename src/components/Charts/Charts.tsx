@@ -6,7 +6,15 @@ interface ChartsProps {
 }
 const Charts = ({ groupedData }: ChartsProps) => {
   return (
-    <VStack spacing={2} align="center" h="100vh" w="100%">
+    <VStack
+      spacing={2}
+      align="center"
+      h="100vh"
+      w="40%"
+      position="sticky"
+      top="0"
+      pb="1%"
+    >
       <DoughnutChart data={groupedData.gender} title={"Characters by gender"} />
       <DoughnutChart
         data={groupedData.species}
