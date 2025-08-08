@@ -1,4 +1,4 @@
-import { Box, Grid, Heading, Skeleton, VStack } from "@chakra-ui/react";
+import { Box, Grid, keyframes, Skeleton, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { sortCharacterIds } from "../../utils/helpers";
 import { IBarChartData } from "../../utils/types";
@@ -49,13 +49,30 @@ const SeasonStats = ({
     }
   }, [seasonData]);
 
+const hoverAnimation = keyframes`
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Lime green shadow */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
+  }
+`;
   return (
     <Box
-      boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
-      borderRadius={"15px"}
+      borderRadius="25px"
+      border="3px solid #000000"
       w="100%"
       h="100%"
-      p={3}
+      p={4}
+      _hover={{
+        animation: `${hoverAnimation} 1.5s ease-in-out`,
+      }}
     >
       <VStack gap={2}>
         <Grid templateColumns="repeat(3, 1fr)" gap={6} w={"100%"}>
@@ -64,7 +81,7 @@ const SeasonStats = ({
             <StatCard
               result={numberOfEp.toString()}
               title={"Total Episodes"}
-              bgColor={"teal.100"}
+              bgColor={"brand.100"}
             />
           </Skeleton>
           {/* unique characters */}
@@ -72,7 +89,7 @@ const SeasonStats = ({
             <StatCard
               result={charactersAmount.toString()}
               title={"Unique Characters"}
-              bgColor={"teal.100"}
+              bgColor={"brand.50"}
             />
           </Skeleton>
           {/* most popular character */}
