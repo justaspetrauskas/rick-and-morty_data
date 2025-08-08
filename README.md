@@ -6,7 +6,7 @@ A React-based data visualization and exploration project using the Rick and Mort
 
 This project is a hobby application built with React, Chakra UI, and React Query to fetch and visualize data from the Rick and Morty API. It allows users to browse and analyze characters, episodes, and locations from the Rick and Morty series.
 
-**See live:** [https://main.d3ssuwtb8fx0g3.amplifyapp.com/](https://main.d3ssuwtb8fx0g3.amplifyapp.com/)
+**See live:** [https://main.d3ssuwtb8fx0g3.amplifyapp.com/](RickAndMorty)
 
 ## Features
 
@@ -29,7 +29,7 @@ The app will be available at `http://localhost:3000`.
 
 ## API Usage
 
-The app consumes (the Rick and Morty API) [https://rickandmortyapi.com/about] for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
+The app consumes the Rick and Morty API https://rickandmortyapi.com/about for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
 
 ## Contributing
 
