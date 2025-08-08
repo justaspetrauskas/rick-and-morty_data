@@ -6,8 +6,10 @@ import {
   Sector,
   Cell,
   ResponsiveContainer,
-  
+  Legend,
+  Tooltip
 } from "recharts";
+// import ChartLegend from "./ChartLegend";
 
 
 interface ChartData {
@@ -108,9 +110,12 @@ const COLORS = [
 
 const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
   const [chartData, setChartData] = useState<ChartData[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isAnimationActive, seIsAnimationActive] = useState(true);
+
+
   const onPieEnter = useCallback(
-    (_: any, index: number) => {
+    (_: any, index: number | null) => {
       setActiveIndex(index);
     },
     [setActiveIndex]
@@ -155,35 +160,65 @@ const hoverAnimation = keyframes`
       <ResponsiveContainer width="100%" height="100%" >
         <PieChart width={400} height={350}>
           <Pie
-            activeIndex={activeIndex}
-            activeShape={renderActiveShape}
             data={chartData}
             cx="50%"
             cy="50%"
             labelLine={false}
-            innerRadius={60}
-            outerRadius={80}
+            isAnimationActive={isAnimationActive}
+            innerRadius={90}
+            outerRadius={120}
+            cornerRadius={5}
+            paddingAngle={5}
             fill="#8884d8"
             dataKey="value"
-            paddingAngle={1}
-            onMouseEnter={onPieEnter}
+            onMouseLeave={(e) => {setActiveIndex(null)}}
           >
             {chartData.map((entry: Record<string, any>, index: number) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={
-                  entry.name === "unknown"
-                    ? "#7F7F7F"
-                    : COLORS[index % COLORS.length]
-                }
-              />
-            ))}
+          <Cell
+            key={`cell-${index}`}
+            fill={entry.name === "unknown" ? "#7F7F7F" : COLORS[index % COLORS.length]}
+            
+            onMouseEnter={(e) => {seIsAnimationActive(false); onPieEnter(e, index)}}
+            style={{ transition: "opacity 0.5s ease", opacity :activeIndex === null ? 1 : activeIndex === index ? 1 : 0.4 }}
+          />
+        ))}
           </Pie>
-          {/* <Legend       iconSize={10}
-      layout="horizontal"
-      verticalAlign="middle"/> */}
+          <Legend       
+          iconSize={10}
+          content={    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+      {chartData.map((entry, index) => (
+        <li
+          key={`item-${index}`}
+          onMouseEnter={() => {seIsAnimationActive(false); setActiveIndex(index)}}
+          onMouseLeave={() => {setActiveIndex(null)}}
+          style={{
+            cursor: "pointer",
+            marginBottom: 8,
+            opacity: activeIndex === null || activeIndex === index ? 1 : 0.4,
+            transition: "opacity 0.3s ease",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              backgroundColor:  COLORS[index % COLORS.length],
+              marginRight: 8,
+            }}
+          />
+          {entry.name}
+        </li>
+      ))}
+    </ul>}
+          layout="vertical"
+          verticalAlign="middle"
+          align="right"
+          iconType="circle"
+          />
       {/* <ChartLegend /> */}
-
         </PieChart>
       </ResponsiveContainer>
     </Box>
