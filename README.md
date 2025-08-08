@@ -1,18 +1,56 @@
-# Rick and Morty Dashboard
-.
-## How to run the app:
+# Rick and Morty Data Project
 
-In the project directory, you can install dependencies:
-### `npm install`
+A React-based data visualization and exploration project using the Rick and Morty API.
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This project is a hobby application built with React, Chakra UI, and React Query to fetch and visualize data from the Rick and Morty API. It allows users to browse and analyze characters, episodes, and locations from the Rick and Morty series.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**See live:** [https://main.d3ssuwtb8fx0g3.amplifyapp.com/](https://main.d3ssuwtb8fx0g3.amplifyapp.com/)
 
-.
+## Features
 
-The app is made to present some of the statistics from Rick and Morty. 
-App is made using [Rick and Morty Api](https://rickandmortyapi.com/ "Rick and Morty Api"), Chkara UI and useQuery hook, and recharts 
+- Fetch and display data from the Rick and Morty API.
+- Interactive charts and graphs for data visualization using Recharts.
+- Responsive and accessible UI built with Chakra UI.
+- State management and data fetching optimized with React Query.
+- Support for filtering and searching through API data.
+
+## Technologies Used
+
+- React 18.2.0
+- Chakra UI 2.3.6
+- React Query 3.39.2
+- Recharts 2.1.15
+- TypeScript 4.8.4
+- Framer Motion 7.6.1
+- Emotion (styled components) 11.10.4
+
+## Installation
+
+1. `git clone <repor-curl>` - Clone the repository:
+
+2. `npm install` - Install dependencies.
+
+3. `npm start` - Runs the app in development mode.
+
+The app will be available at `http://localhost:3000`.
+
+## API Usage
+
+The app consumes the Rick and Morty API for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any feature requests, bug fixes, or enhancements.
+
+## License
+
+This project is private for now.
+
+
+
+
+
+
+
