@@ -29,7 +29,7 @@ The app will be available at `http://localhost:3000`.
 
 ## API Usage
 
-The app consumes the Rick and Morty API ([https://rickandmortyapi.com/about]) for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
+The app consumes the Rick and Morty API (https://rickandmortyapi.com/about) for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
 
 ## Contributing
 
