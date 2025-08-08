@@ -20,20 +20,33 @@ const DashboardData = ({
     });
 
   return (
-    <Flex flexDir="row">
-      <VStack spacing={2} w="60%" align="stretch">
-        <SeasonStats
-          seasonData={seasonData}
-          isLoading={loading}
-          charactersAmount={uniqueCharactersIds.length}
-        />
-        <Skeleton isLoaded={!loading}>
-          <DataTable paginatedData={paginatedData} isLoading={isLoading} />
-        </Skeleton>
-      </VStack>
+<Flex
+  flexDir={{ base: "column", md: "row" }} // stack vertically on mobile, horizontally on desktop
+  w="100%"
+  px={{ base: 4, md: 0 }} // horizontal padding on mobile for spacing
+  gap={4} // spacing between child elements on all screens
+>
+  <VStack
+    spacing={2}
+    w={{ base: "100%", md: "60%" }} // full width on mobile, 60% on desktop
+    align="stretch"
+  >
+    <SeasonStats
+      seasonData={seasonData}
+      isLoading={loading}
+      charactersAmount={uniqueCharactersIds.length}
+    />
+    <Skeleton isLoaded={!loading}>
+      <DataTable paginatedData={paginatedData} isLoading={isLoading} />
+    </Skeleton>
+  </VStack>
 
-      <Charts groupedData={groupedData} />
-    </Flex>
+  <Charts
+    groupedData={groupedData}
+
+  />
+</Flex>
+
   );
 };
 

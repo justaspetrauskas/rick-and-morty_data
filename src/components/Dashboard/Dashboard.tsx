@@ -35,7 +35,14 @@ const Dashboard = () => {
         selectSeason={selectSeason}
       />
       {/* data */}
-      <Skeleton isLoaded={!isLoading} w="100%" ml="15%" borderRadius="15px">
+      <Skeleton 
+      isLoaded={!isLoading} 
+      w="100%" 
+      borderRadius="15px" 
+      ml={{ base: 0, md: "15%" }}  // Margin left 15% on desktop, 0 on mobile
+      mt={{ base: "60px", md: 0 }} // Top margin 60px on mobile only
+      
+      >
         <VStack
           w="100%"
           minH={"100vh"}

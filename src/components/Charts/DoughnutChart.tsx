@@ -6,8 +6,10 @@ import {
   Sector,
   Cell,
   ResponsiveContainer,
-  Legend,
+  Legend
 } from "recharts";
+
+import ChartLegend from "./ChartLegend";
 
 interface ChartData {
   name: string;
@@ -103,6 +105,8 @@ const COLORS = [
   "#FF8042",
 ];
 
+
+
 const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -120,6 +124,10 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
     setChartData(transformedData);
     console.log(transformedData);
   }, [data]);
+
+
+
+
   return (
     <Box
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
@@ -159,18 +167,11 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
               />
             ))}
           </Pie>
-          <Legend
-            iconSize={10}
-            layout="horizontal"
-            verticalAlign="middle"
-            wrapperStyle={{
-              bottom: "2%",
+          {/* <Legend       iconSize={10}
+      layout="horizontal"
+      verticalAlign="middle"/> */}
+      {/* <ChartLegend /> */}
 
-              right: 0,
-              transform: "translate(0, -50%)",
-              lineHeight: "20px",
-            }}
-          />
         </PieChart>
       </ResponsiveContainer>
     </Box>

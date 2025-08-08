@@ -23,8 +23,8 @@ interface NavigationProps {
 }
 const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
   return (
-    <Flex flexDir="column" h="100%" mt={4}>
-      <Accordion defaultIndex={[0]} allowMultiple as={Menu}>
+    <Flex flexDir="column" h="100%" mt={4} >
+      <Accordion defaultIndex={[0]} allowMultiple as={Menu} >
         <AccordionItem border={"none"}>
           <AccordionButton aria-label="seasons" borderRadius={5}>
             <Box w="100%" flex="1">
@@ -41,7 +41,7 @@ const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
             </Box>
             <AccordionIcon />
           </AccordionButton>
-          <AccordionPanel float={"right"} w="90%">
+          <AccordionPanel float={"right"} w="90%" bg={{ base: "blue.500", md: "transparent" }}>
             <VStack
               divider={<StackDivider borderColor="gray.200" />}
               spacing={2}

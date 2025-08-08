@@ -10,10 +10,11 @@ const Charts = ({ groupedData }: ChartsProps) => {
       spacing={2}
       align="center"
       h="100vh"
-      w="40%"
       position="sticky"
       top="0"
       pb="1%"
+      w={{ base: "100%", md: "40%" }}
+      mt={{ base: 4, md: 0 }}
     >
       <DoughnutChart data={groupedData.gender} title={"Characters by gender"} />
       <DoughnutChart
