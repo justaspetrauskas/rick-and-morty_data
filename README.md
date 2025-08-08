@@ -16,15 +16,6 @@ This project is a hobby application built with React, Chakra UI, and React Query
 - State management and data fetching optimized with React Query.
 - Support for filtering and searching through API data.
 
-## Technologies Used
-
-- React 18.2.0
-- Chakra UI 2.3.6
-- React Query 3.39.2
-- Recharts 2.1.15
-- TypeScript 4.8.4
-- Framer Motion 7.6.1
-- Emotion (styled components) 11.10.4
 
 ## Installation
 
@@ -38,7 +29,7 @@ The app will be available at `http://localhost:3000`.
 
 ## API Usage
 
-The app consumes the Rick and Morty API for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
+The app consumes the Rick and Morty API ([https://rickandmortyapi.com/about]) for data. API endpoints include character, episode, and location information. Data fetching is handled efficiently using React Query.
 
 ## Contributing
 
