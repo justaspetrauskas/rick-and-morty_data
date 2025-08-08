@@ -107,7 +107,6 @@ const COLORS = [
 ];
 
 
-
 const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -140,6 +139,21 @@ const hoverAnimation = keyframes`
     box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
   }
 `;
+
+const offset = 0
+const getEntryOffsetX=(entry: Record<string, any>,index:number)=>{
+const midAngle = entry.midAngle ?? 0; // Replace or ensure midAngle is provided in degrees
+  const radian = (midAngle * Math.PI) / 180;
+  const xOffset = activeIndex === index ? offset * Math.cos(radian) : 0;
+  return xOffset;
+}
+const getEntryOffsetY=(entry: Record<string, any>,index:number)=>{
+const midAngle = entry.midAngle ?? 0; // Replace or ensure midAngle is provided in degrees
+  const radian = (midAngle * Math.PI) / 180;
+  const yOffset = activeIndex === index ? offset * Math.sin(radian) : 0;
+  return yOffset;
+}
+
 
   return (
     <Box
@@ -174,12 +188,20 @@ const hoverAnimation = keyframes`
             onMouseLeave={(e) => {setActiveIndex(null)}}
           >
             {chartData.map((entry: Record<string, any>, index: number) => (
+
+              
           <Cell
             key={`cell-${index}`}
             fill={entry.name === "unknown" ? "#7F7F7F" : COLORS[index % COLORS.length]}
             
             onMouseEnter={(e) => {seIsAnimationActive(false); onPieEnter(e, index)}}
-            style={{ transition: "opacity 0.5s ease", opacity :activeIndex === null ? 1 : activeIndex === index ? 1 : 0.4 }}
+      style={{
+        transition: "opacity 0.5s ease, transform 0.3s ease",
+        opacity: activeIndex === null || activeIndex === index ? 1 : 0.4,
+        transform: `scale(${activeIndex === index ? 1.05 : 1})`,
+        filter: activeIndex === index ? "drop-shadow(0 0 5px rgba(0,0,0,0.3))" : "none",
+        transformOrigin: "50% 50%",
+      }}
           />
         ))}
           </Pie>
@@ -187,6 +209,9 @@ const hoverAnimation = keyframes`
           iconSize={10}
           content={    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
       {chartData.map((entry, index) => (
+
+
+
         <li
           key={`item-${index}`}
           onMouseEnter={() => {seIsAnimationActive(false); setActiveIndex(index)}}
