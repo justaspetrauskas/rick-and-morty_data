@@ -1,10 +1,10 @@
 import {
   Avatar,
-  Collapse,
+  Button,
   Divider,
   Flex,
   Heading,
-  IconButton,
+  useColorMode,
   Skeleton,
   Text,
 } from "@chakra-ui/react";
@@ -20,6 +20,9 @@ interface SidebarProps {
   selectSeason: (season: string) => void;
 }
 const Sidebar = ({ seasons, isLoading, selectSeason }: SidebarProps) => {
+const { colorMode, toggleColorMode } = useColorMode()
+
+
   return (
 <Flex
   pos="fixed"
@@ -63,6 +66,9 @@ const Sidebar = ({ seasons, isLoading, selectSeason }: SidebarProps) => {
       </Flex>
       <Divider mt={{ base: 0, md: 4 }} display={{ base: "none", md: "block" }} />
       {/* Render Navigation component with horizontal layout on mobile */}
+      <Button onClick={toggleColorMode}>
+      {colorMode === "light" ? "Switch to Dark" : "Switch to Light"}
+    </Button>
       <Navigation
         seasons={seasons}
         selectSeason={selectSeason}
