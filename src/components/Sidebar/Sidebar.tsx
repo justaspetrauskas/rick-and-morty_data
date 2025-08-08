@@ -7,6 +7,9 @@ import {
   useColorMode,
   Skeleton,
   Text,
+  FormLabel,
+  FormControl,
+  Switch,
 } from "@chakra-ui/react";
 import { FiMenu, FiHome } from "react-icons/fi";
 import { CgGhostCharacter } from "react-icons/cg";
@@ -66,9 +69,15 @@ const { colorMode, toggleColorMode } = useColorMode()
       </Flex>
       <Divider mt={{ base: 0, md: 4 }} display={{ base: "none", md: "block" }} />
       {/* Render Navigation component with horizontal layout on mobile */}
-      <Button onClick={toggleColorMode}>
-      {colorMode === "light" ? "Switch to Dark" : "Switch to Light"}
-    </Button>
+
+
+<FormControl display='flex' alignItems='center'>
+  <FormLabel htmlFor='email-alerts' mb='0'>
+    {colorMode === "light" ? "Switch to Dark" : "Switch to Light"}
+  </FormLabel>
+  <Switch id='email-alerts' isChecked={colorMode === "dark" } onChange={toggleColorMode}/>
+</FormControl>
+
       <Navigation
         seasons={seasons}
         selectSeason={selectSeason}
