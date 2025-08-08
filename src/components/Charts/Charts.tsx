@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import DoughnutChart from "./DoughnutChart";
 interface ChartsProps {
@@ -6,14 +6,12 @@ interface ChartsProps {
 }
 const Charts = ({ groupedData }: ChartsProps) => {
   return (
-    <VStack
-      spacing={2}
+    <HStack
+      spacing={4}              // spacing between charts horizontally
       align="center"
-      h="100vh"
-      position="sticky"
-      top="0"
       pb="1%"
-      w={{ base: "100%", md: "40%" }}
+      w={"100%"}
+      minHeight="350px"
       mt={{ base: 4, md: 0 }}
     >
       <DoughnutChart data={groupedData.gender} title={"Characters by gender"} />
@@ -22,7 +20,7 @@ const Charts = ({ groupedData }: ChartsProps) => {
         title={"Characters by species"}
       />
       <DoughnutChart data={groupedData.status} title={"Characters by status"} />
-    </VStack>
+    </HStack>
   );
 };
 

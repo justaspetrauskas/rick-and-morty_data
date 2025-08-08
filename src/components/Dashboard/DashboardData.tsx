@@ -21,16 +21,16 @@ const DashboardData = ({
 
   return (
 <Flex
-  flexDir={{ base: "column", md: "row" }} // stack vertically on mobile, horizontally on desktop
-  w="100%"
+  flexDir="column" // always stack vertically
   px={{ base: 4, md: 0 }} // horizontal padding on mobile for spacing
-  gap={4} // spacing between child elements on all screens
+  gap={4} // spacing between child elements
 >
   <VStack
     spacing={2}
-    w={{ base: "100%", md: "60%" }} // full width on mobile, 60% on desktop
+    w="100%" // full width for SeasonStats and DataTable container
     align="stretch"
   >
+    <Charts groupedData={groupedData} />
     <SeasonStats
       seasonData={seasonData}
       isLoading={loading}
@@ -41,10 +41,7 @@ const DashboardData = ({
     </Skeleton>
   </VStack>
 
-  <Charts
-    groupedData={groupedData}
-
-  />
+  
 </Flex>
 
   );

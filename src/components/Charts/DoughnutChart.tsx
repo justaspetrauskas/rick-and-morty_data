@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, keyframes } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   PieChart,
@@ -6,10 +6,9 @@ import {
   Sector,
   Cell,
   ResponsiveContainer,
-  Legend
+  
 } from "recharts";
 
-import ChartLegend from "./ChartLegend";
 
 interface ChartData {
   name: string;
@@ -122,25 +121,38 @@ const DoughnutChart = ({ data, title }: DoughnutChartProps) => {
       return { name: entry[0], value: entry[1].length };
     });
     setChartData(transformedData);
-    console.log(transformedData);
   }, [data]);
 
 
-
+const hoverAnimation = keyframes`
+  0% {
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Lime green shadow */
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
+  }
+`;
 
   return (
     <Box
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
-      borderRadius={"15px"}
+      border="3px solid #000000"
+      borderRadius={"25px"}
       w="100%"
-      minH={`calc(100%/3)`}
+      h="500px"
       overflow="hidden"
       p={3}
+            _hover={{
+        animation: `${hoverAnimation} 1.5s ease-in-out infinite`,
+      }}
     >
       <Heading as="h4" size="md">
         {title}
       </Heading>
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="100%" >
         <PieChart width={400} height={350}>
           <Pie
             activeIndex={activeIndex}

@@ -27,7 +27,7 @@ const Dashboard = () => {
     setSeason(season);
   };
   return (
-    <Flex h="100vh" flexDir="row" maxWidth="100vw">
+    <Flex  flexDir="row" maxWidth="100vw">
       {/* sidebar */}
       <Sidebar
         seasons={Object.keys(groupedData)}

@@ -1,4 +1,4 @@
-import { Flex, Skeleton, Table, VStack } from "@chakra-ui/react";
+import { Flex, Skeleton, Table, VStack, keyframes } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import useMultipleCharacters from "../../utils/hooks/useMultipleCharacters";
 import TableBody from "./TableBody";
@@ -25,14 +25,30 @@ const DataTable = ({ paginatedData, isLoading }: DataTableProps) => {
     setCurrentPage(0);
   }, [paginatedData]);
 
+  const hoverAnimation = keyframes`
+    0% {
+      box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Lime green shadow */
+    }
+    100% {
+      box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
+    }
+  `;
+
   return (
     <VStack
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
-      borderRadius={"15px"}
+      borderRadius={"25px"}
       spacing={2}
       w="100%"
       overflow="auto"
       p={3}
+      border="3px solid #000000"
+                  _hover={{
+        animation: `${hoverAnimation} 1.5s ease-in-out infinite`,
+      }}
     >
       <TableControls
         pages={paginatedData.length}

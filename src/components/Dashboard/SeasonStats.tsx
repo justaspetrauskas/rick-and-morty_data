@@ -51,15 +51,12 @@ const SeasonStats = ({
 
 const hoverAnimation = keyframes`
   0% {
-    transform: scale(1);
     box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
   }
   50% {
-    transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Lime green shadow */
   }
   100% {
-    transform: scale(1);
     box-shadow: 0 0 20px rgba(255, 0, 150, 0.7);
   }
 `;
@@ -71,7 +68,7 @@ const hoverAnimation = keyframes`
       h="100%"
       p={4}
       _hover={{
-        animation: `${hoverAnimation} 1.5s ease-in-out`,
+        animation: `${hoverAnimation} 1.5s ease-in-out infinite`,
       }}
     >
       <VStack gap={2}>
