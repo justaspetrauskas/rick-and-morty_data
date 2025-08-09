@@ -35,70 +35,78 @@ const TopBar = ({ seasons, isLoading, selectSeason }: TopBarProps) => {
 
 
   return (
-    <Box>
-    <Flex
-      pos="fixed"
-      top={0}
-      left={0}
-      h={{ base: "60px", md: "100vh" }}
-      w={{ base: "100%", md: "15%" }}
-      flexDir={{ base: "row", md: "column" }}
-      justifyContent="center"
-      alignItems="center"
-      p={{ base: "0 1rem", md: "0.5%" }}
-      bg={{ base: "blue.500", md: "transparent" }}
-      zIndex={9999}
-    >
-
-    </Flex>
+    <Box w="100vw" bg="white" zIndex={9999} pos="sticky" top={0} >
+      <Flex
+        w="100%"
+        maxW="80vw"
+        my={"0"} mx={"auto"}
+        flexDir="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        py={"1rem"}
+      >
+        <Flex
+          w="100%"
+          alignItems="center"
+          justifyContent="flex-start"
+          columnGap={"0.5rem"}
+        >
+          <Avatar name="Rick and Morty" src={logo} size="lg" />
+          {/* Show text next to avatar only on desktop */}
+          <Flex flexDir="column" display={{ base: "none", md: "flex" }}>
+            <Heading as="h2" size="lg" sx={{ fontFamily: 'RickAndMorty, sans-serif' }}>Rick and Morty</Heading>
+            <Text color="grey">Beyond words</Text>
+          </Flex>
+        </Flex>
+      </Flex>
     </Box>
+
   );
 };
 
 export default TopBar;
 
 
-      // <Skeleton isLoaded={!isLoading} h="100%" w="100%">
-      //   <Flex
-      //     flexDir={{ base: "row", md: "column" }}
-      //     px={{ base: 4, md: "5%" }}
-      //     h="100%"
-      //     w="100%"
-      //     borderRadius="15px"
-      //     as="nav"
-      //     boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
-      //     alignItems="center"
-      //   >
-      //     <Flex
-      //       w="100%"
-      //       py={2}
-      //       mt={{ base: 0, md: 4 }}
-      //       alignItems="center"
-      //       justifyContent={{ base: "space-between", md: "space-around" }}
-      //     >
-      //       <Avatar name="Rick and Morty" src={logo} size="md" />
-      //       {/** Show text next to avatar only on desktop */}
-      //       <Flex flexDir="column" display={{ base: "none", md: "flex" }}>
-      //         <Heading as="h3" size="sm">
-      //           Rick and Morty
-      //         </Heading>
-      //         <Text color="grey">Beyond words</Text>
-      //       </Flex>
-      //     </Flex>
-      //     <Divider mt={{ base: 0, md: 4 }} display={{ base: "none", md: "block" }} />
-      //     {/* Render Navigation component with horizontal layout on mobile */}
+
+//   <Flex
+//     flexDir={{ base: "row", md: "column" }}
+//     px={{ base: 4, md: "5%" }}
+//     h="100%"
+//     w="100%"
+//     borderRadius="15px"
+//     as="nav"
+//     boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
+//     alignItems="center"
+//   >
+//     <Flex
+//       w="100%"
+//       py={2}
+//       mt={{ base: 0, md: 4 }}
+//       alignItems="center"
+//       justifyContent={{ base: "space-between", md: "space-around" }}
+//     >
+//       <Avatar name="Rick and Morty" src={logo} size="md" />
+//       {/** Show text next to avatar only on desktop */}
+//       <Flex flexDir="column" display={{ base: "none", md: "flex" }}>
+//         <Heading as="h3" size="sm">
+//           Rick and Morty
+//         </Heading>
+//         <Text color="grey">Beyond words</Text>
+//       </Flex>
+//     </Flex>
+//     <Divider mt={{ base: 0, md: 4 }} display={{ base: "none", md: "block" }} />
+//     {/* Render Navigation component with horizontal layout on mobile */}
 
 
-      //     <FormControl display='flex' alignItems='center'>
-      //       <FormLabel htmlFor='email-alerts' mb='0'>
-      //         {colorMode === "light" ? "Switch to Dark" : "Switch to Light"}
-      //       </FormLabel>
-      //       <Switch id='email-alerts' isChecked={colorMode === "dark"} onChange={toggleColorMode} />
-      //     </FormControl>
+//     <FormControl display='flex' alignItems='center'>
+//       <FormLabel htmlFor='email-alerts' mb='0'>
+//         {colorMode === "light" ? "Switch to Dark" : "Switch to Light"}
+//       </FormLabel>
+//       <Switch id='email-alerts' isChecked={colorMode === "dark"} onChange={toggleColorMode} />
+//     </FormControl>
 
-      //     <Navigation
-      //       seasons={seasons}
-      //       selectSeason={selectSeason}
-      //     />
-      //   </Flex>
-      // </Skeleton>
+//     <Navigation
+//       seasons={seasons}
+//       selectSeason={selectSeason}
+//     />
+//   </Flex>

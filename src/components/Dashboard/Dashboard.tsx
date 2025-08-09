@@ -28,39 +28,40 @@ const Dashboard = () => {
   };
   return (
     <Box my={"0"} mx={"auto"} width={"100%"}>
-    <Flex  flexDir="column" maxWidth="80vw" mx={"auto"}>
-      {/* sidebar */}
       <TopBar
         seasons={Object.keys(groupedData)}
         isLoading={isLoading}
         selectSeason={selectSeason}
       />
-      {/* data */}
-      <Skeleton 
-      isLoaded={!isLoading} 
-      w="100%" 
-      borderRadius="15px" 
-      
-      >
-        <VStack
+      <Flex flexDir="column" maxWidth="80vw" mx={"auto"}>
+        {/* sidebar */}
+
+        {/* data */}
+        <Skeleton
+          isLoaded={!isLoading}
           w="100%"
-          minH={"100vh"}
-          spacing={2}
-          align="left"
-          px={"1%"}
-          py={"0.5%"}
+          borderRadius="15px"
+
         >
-          {/* DashBoard top */}
-          <DashBoardHeader season={season} />
-          {/* statistics */}
-          <DashboardData
-            seasonData={groupedData[season]}
-            loading={isLoading}
-            uniqueCharactersIds={uniqueCharactersIds}
-          />
-        </VStack>
-      </Skeleton>
-    </Flex>
+          <VStack
+            w="100%"
+            minH={"100vh"}
+            spacing={2}
+            align="left"
+            px={"1%"}
+            py={"0.5%"}
+          >
+            {/* DashBoard top */}
+            <DashBoardHeader season={season} />
+            {/* statistics */}
+            <DashboardData
+              seasonData={groupedData[season]}
+              loading={isLoading}
+              uniqueCharactersIds={uniqueCharactersIds}
+            />
+          </VStack>
+        </Skeleton>
+      </Flex>
     </Box>
   );
 };
