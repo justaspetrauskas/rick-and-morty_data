@@ -5,8 +5,8 @@ interface DashboardHeaderProps {
 }
 const DashBoardHeader = ({ season }: DashboardHeaderProps) => {
   return (
-    <Heading as="h3" size="lg" py="2%">
-      Welcome to the statistics of Rick and Morty, Season #{season}
+    <Heading as="h3" size="lg" py="2%" sx={{ fontFamily: 'RickAndMorty, sans-serif' }}>
+      Rick and Morty, Season #{season}
     </Heading>
   );
 };

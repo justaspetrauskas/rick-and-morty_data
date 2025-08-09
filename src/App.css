@@ -1,1 +1,21 @@
+@font-face {
+  font-family: 'RickAndMorty';
+  src: url('./assets/fonts/WubbaLubbaDubDub.woff2') format('woff2'),
+  url('./assets/fonts/WubbaLubbaDubDub.ttf') format('trueType'),
+  url('./assets/fonts/WubbaLubbaDubDub.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
+.rick-morty-heading {
+  font-family: 'RickAndMorty' !important;
+  font-size: 4rem; /* Much bigger size */
+  color: #3fe1aa; /* Bright greenish-cyan color like Rick and Morty logo */
+  text-shadow:
+    2px 2px 0 #000, /* black outline shadow */
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000;
+  /* Add some padding or margin as needed */
+  padding: 1rem 0;
+}

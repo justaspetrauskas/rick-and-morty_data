@@ -1,8 +1,8 @@
-import { Flex, Skeleton, VStack } from "@chakra-ui/react";
+import { Box, Flex, Skeleton, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { getUniqueCharactersIds } from "../../utils/helpers";
 import useEpisodeData from "../../utils/hooks/useEpisodeData";
-import Sidebar from "../Sidebar/Sidebar";
+import TopBar from "../TopBar/TopBar";
 import DashBoardHeader from "./DashBoardHeader";
 import DataTable from "../DataTable/DataTable";
 import SeasonStats from "./SeasonStats";
@@ -27,9 +27,10 @@ const Dashboard = () => {
     setSeason(season);
   };
   return (
-    <Flex  flexDir="row" maxWidth="100vw">
+    <Box my={"0"} mx={"auto"} width={"100%"}>
+    <Flex  flexDir="column" maxWidth="80vw" mx={"auto"}>
       {/* sidebar */}
-      <Sidebar
+      <TopBar
         seasons={Object.keys(groupedData)}
         isLoading={isLoading}
         selectSeason={selectSeason}
@@ -39,8 +40,6 @@ const Dashboard = () => {
       isLoaded={!isLoading} 
       w="100%" 
       borderRadius="15px" 
-      ml={{ base: 0, md: "15%" }}  // Margin left 15% on desktop, 0 on mobile
-      mt={{ base: "60px", md: 0 }} // Top margin 60px on mobile only
       
       >
         <VStack
@@ -62,6 +61,7 @@ const Dashboard = () => {
         </VStack>
       </Skeleton>
     </Flex>
+    </Box>
   );
 };
 
