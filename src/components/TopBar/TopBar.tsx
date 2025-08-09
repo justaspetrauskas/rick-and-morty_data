@@ -35,7 +35,7 @@ const TopBar = ({ seasons, isLoading, selectSeason }: TopBarProps) => {
 
 
   return (
-    <Box w="100vw" bg={bgColor} zIndex={9999} pos="sticky" top={0} >
+    <Box w="100%" bg={bgColor} zIndex={9999} pos="sticky" top={0} >
       <Flex
         w="100%"
         maxW="80vw"

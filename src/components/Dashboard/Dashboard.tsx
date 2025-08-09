@@ -46,10 +46,8 @@ const Dashboard = () => {
           <VStack
             w="100%"
             minH={"100vh"}
-            spacing={2}
+            spacing={8}
             align="left"
-            px={"1%"}
-            py={"0.5%"}
           >
             {/* DashBoard top */}
             <DashBoardHeader season={season} />
