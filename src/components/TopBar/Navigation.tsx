@@ -69,20 +69,20 @@ const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
       <MenuButton
         as={Button}
         rounded="md"
-
+        border="2px solid black"
         variant="solid"
         cursor="pointer"
         minW={0}
-        bg="yellow.400"
+        bg="green.400"
         color="black"
         fontWeight="bold"
         boxShadow="0 4px 0 orange.700"
         _hover={{
-          bg: "yellow.300",
+          bg: "green.300",
           boxShadow: "0 6px 0 orange.800",
         }}
         _active={{
-          bg: "orange.500",
+          bg: "green.500",
           transform: "scale(0.95)",
           boxShadow: "0 2px 0 orange.600",
         }}
@@ -103,6 +103,8 @@ const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
         initial="hidden"
         animate="visible"
         exit="hidden"
+        bg="transparent"
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         {seasons.map((season) => (
           <MotionMenuItem
@@ -111,17 +113,17 @@ const Navigation = ({ seasons, selectSeason }: NavigationProps) => {
             onClick={() => handleSelectSeason(season)}
             borderRadius="md"
             variants={itemVariants}
-            mb={2}
+            mb={1}
             justifyContent="center"
-            bg="yellow.200"
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            bg="green.200"
+            transition={{ type: "spring", stiffness: 10, damping: 20 }}
             _hover={{
-              bg: "yellow.300",
+              bg: "green.300",
               transform: "scale(1.05)",
               boxShadow: "0 4px 0 orange.700",
             }}
             _active={{
-              bg: "orange.500",
+              bg: "green.500",
               transform: "scale(0.95)",
               boxShadow: "0 2px 0 orange.600",
             }}
