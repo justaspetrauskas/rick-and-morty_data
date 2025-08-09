@@ -58,6 +58,12 @@ const TopBar = ({ seasons, isLoading, selectSeason }: TopBarProps) => {
             <Text color="grey">Beyond words</Text>
           </Flex>
         </Flex>
+        <Box ml={"auto"}>
+          <Navigation
+            seasons={seasons}
+            selectSeason={selectSeason}
+          />
+        </Box>
       </Flex>
     </Box>
 
@@ -105,8 +111,5 @@ export default TopBar;
 //       <Switch id='email-alerts' isChecked={colorMode === "dark"} onChange={toggleColorMode} />
 //     </FormControl>
 
-//     <Navigation
-//       seasons={seasons}
-//       selectSeason={selectSeason}
-//     />
+
 //   </Flex>
