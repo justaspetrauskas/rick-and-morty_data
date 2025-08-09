@@ -1,18 +1,16 @@
 import {
   Avatar,
   Box,
-  Divider,
+  Button,
   Flex,
   Heading,
   useColorMode,
   Skeleton,
   Text,
-  FormLabel,
-  FormControl,
-  Switch,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
-import { FiMenu, FiHome } from "react-icons/fi";
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { CgGhostCharacter } from "react-icons/cg";
 
 
@@ -33,9 +31,11 @@ interface TopBarProps {
 const TopBar = ({ seasons, isLoading, selectSeason }: TopBarProps) => {
   const { colorMode, toggleColorMode } = useColorMode()
 
+  const bgColor = useColorModeValue("white", "gray.800");
+
 
   return (
-    <Box w="100vw" bg="white" zIndex={9999} pos="sticky" top={0} >
+    <Box w="100vw" bg={bgColor} zIndex={9999} pos="sticky" top={0} >
       <Flex
         w="100%"
         maxW="80vw"
@@ -58,12 +58,15 @@ const TopBar = ({ seasons, isLoading, selectSeason }: TopBarProps) => {
             <Text color="grey">Beyond words</Text>
           </Flex>
         </Flex>
-        <Box ml={"auto"}>
+        <Flex ml={"auto"} direction={"row"} columnGap={"0.5rem"} alignItems={"center"}>
           <Navigation
             seasons={seasons}
             selectSeason={selectSeason}
           />
-        </Box>
+          <Button onClick={toggleColorMode}>
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
+        </Flex>
       </Flex>
     </Box>
 
