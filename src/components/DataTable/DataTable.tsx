@@ -42,6 +42,8 @@ const DataTable = ({ paginatedData, isLoading }: DataTableProps) => {
       boxShadow="0 4px 12px 0 rgba(0,0,0,0.05)"
       borderRadius={"25px"}
       spacing={2}
+      maxW={"80vw"}
+      mx={"auto"}
       w="100%"
       overflow="auto"
       p={3}

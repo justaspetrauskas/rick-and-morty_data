@@ -24,22 +24,19 @@ const DashboardData = ({
   flexDir="column" // always stack vertically
   px={{ base: 4, md: 0 }} // horizontal padding on mobile for spacing
   gap={4} // spacing between child elements
+  h={"100vh"}
 >
-  <VStack
-    spacing={2}
-    w="100%" // full width for SeasonStats and DataTable container
-    align="stretch"
-  >
+
     <Charts groupedData={groupedData} />
-    <SeasonStats
+    {/* <SeasonStats
       seasonData={seasonData}
       isLoading={loading}
       charactersAmount={uniqueCharactersIds.length}
     />
     <Skeleton isLoaded={!loading}>
       <DataTable paginatedData={paginatedData} isLoading={isLoading} />
-    </Skeleton>
-  </VStack>
+    </Skeleton> */}
+
 
   
 </Flex>

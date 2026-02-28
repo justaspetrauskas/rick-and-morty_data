@@ -5,7 +5,7 @@ interface DashboardHeaderProps {
 }
 const DashBoardHeader = ({ season }: DashboardHeaderProps) => {
   return (
-    <Box flex={"1 1 60vh"} border="2px solid black" borderRadius="md">
+    <Box flex={"1 1 60vh"} border="2px solid black" borderRadius="md" width={"100%"} maxWidth={ "80vw"} mx={"auto"}>
     <Heading as="h3" size="lg" py="2%" sx={{ fontFamily: 'RickAndMorty, sans-serif' }}>
       Rick and Morty
     </Heading>

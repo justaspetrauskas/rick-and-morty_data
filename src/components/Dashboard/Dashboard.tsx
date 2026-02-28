@@ -33,7 +33,7 @@ const Dashboard = () => {
         isLoading={isLoading}
         selectSeason={selectSeason}
       />
-      <Flex flexDir="column" maxWidth="80vw" mx={"auto"}>
+      <Flex flexDir="column" width={'100%'} mx={"auto"}>
         {/* sidebar */}
 
         {/* data */}
